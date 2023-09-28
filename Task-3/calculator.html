@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #d9aac9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        }
+    #calculator {
+        width: 600px;
+        border: 5px solid rgb(42, 55, 135);
+        border-radius: 5px;
+        background-color: #54817b;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        }
+  
+    #output {
+        font-size: 50px;
+        text-align: right;
+        padding: 10px;
+        border-bottom: 1px solid #e6930d;
+        }
+  
+    .row {
+        display: flex;
+        }
+  
+    .btn {
+        flex: 1;
+        font-size: 40px;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #532020;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #9ec415;
+        background-color: #9479c9;
+        transition: background-color 0.3s;
+        }
+  
+    .btn:hover {
+        background-color: rgb(15, 119, 135);
+        }
+    #history {
+      margin-top: 20px;
+      padding: 10px;
+      border-top: 1px solid #166d7d;
+      font-size: 35px;
+      color: rgb(112, 11, 67);
+      overflow-y: scroll;
+      max-height: 150px;
+      }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <div id="output">0</div>
+    <div class="row">
+      <div class="btn" onclick="clearOutput()">AC</div>
+      <div class="btn" onclick="clearEntry()">C</div>
+      <div class="btn" onclick="appendOperator('%')">%</div>
+      <div class="btn operator" onclick="appendOperator('/')">/</div>
+    </div>
+    <div class="row">
+      <div class="btn" onclick="appendNumber('7')">7</div>
+      <div class="btn" onclick="appendNumber('8')">8</div>
+      <div class="btn" onclick="appendNumber('9')">9</div>
+      <div class="btn operator" onclick="appendOperator('*')">x</div>
+    </div>
+    <div class="row">
+      <div class="btn" onclick="appendNumber('4')">4</div>
+      <div class="btn" onclick="appendNumber('5')">5</div>
+      <div class="btn" onclick="appendNumber('6')">6</div>
+      <div class="btn operator" onclick="appendOperator('-')">-</div>
+    </div>
+    <div class="row">
+      <div class="btn" onclick="appendNumber('1')">1</div>
+      <div class="btn" onclick="appendNumber('2')">2</div>
+      <div class="btn" onclick="appendNumber('3')">3</div>
+      <div class="btn operator" onclick="appendOperator('+')">+</div>
+    </div>
+    <div class="row">
+      <div class="btn" onclick="appendNumber('0')">0</div>
+      <div class="btn" onclick="appendDecimal('.')">.</div>
+      <div class="btn" onclick="calculate()">=</div>
+    </div>
+  <div id="history">History:</div>
+  </div>
+
+  <script>
+    let currentValue = "";
+    let currentOperator = "";
+    const outputElement = document.getElementById("output");
+    const historyElement = document.getElementById("history");
+
+    function appendNumber(number) {
+      currentValue += number;
+      outputElement.innerText = currentValue;
+    }
+
+    function appendDecimal(decimal) {
+      if (!currentValue.includes(decimal)) {
+        currentValue += decimal;
+        outputElement.innerText = currentValue;
+      }
+    }
+
+    function appendOperator(operator) {
+      if (currentValue !== "") {
+        currentValue += " " + operator + " ";
+        currentOperator = operator;
+        outputElement.innerText = currentValue;
+      }
+    }
+
+    function updateHistory(entry) {
+      const historyItem = document.createElement("div");
+      historyItem.textContent = entry;
+      historyElement.appendChild(historyItem);
+      historyElement.scrollTop = historyElement.scrollHeight;
+    }
+
+    function calculate() {
+      if (currentValue !== "") {
+        try {
+          const result = eval(currentValue);
+          updateHistory(currentValue + " = " + result);
+          outputElement.innerText = result;
+          currentValue = result;
+        } catch (error) {
+          outputElement.innerText = "Error";
+        }
+      }
+    }
+
+    function clearOutput() {
+      currentValue = "";
+      currentOperator = "";
+      outputElement.innerText = "0";
+    }
+
+    function clearEntry() {
+      currentValue = "";
+      outputElement.innerText = "0";
+    }
+
+    function clearHistory() {
+      historyElement.innerHTML = "History:";
+    }
+
+    // Update the "AC" button to call clearHistory
+    const clearAllButton = document.querySelector(".btn[onclick='clearOutput()']");
+    clearAllButton.textContent = "AC";
+    clearAllButton.setAttribute("onclick", "clearHistory()");
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* Add your CSS styling here */
+body{
+    background-color: #d2d18f;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1400px;
+    height: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9400392;
+}
+
+.registration-form {
+    flex-basis: 50%;
+    justify-content: center;
+    padding: 20px;
+    border: 5px solid #2ea623;
+    border-radius: 5px;
+    background-color: #d3f80553;
+}
+.registration-history {
+    flex-basis: 48%;
+    padding: 20px;
+    border: 5px solid #7f1867;
+    border-radius: 5px;
+    background-color: #62994fe9;
+}
+h1{
+    font-size: 60px;
+    transform: translate(0vh,-6vh);
+    color: #032427fe;
+}
+h2{
+    font-size: 60px;
+    transform: translate(0vh,-7vh);
+    color: rgb(62, 9, 9);
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+    transform: translate(0vh,-7vh);
+    margin-bottom: 10px;
+}
+.row1{
+    display: flex;
+    justify-content: space-between;
+    transform: translate(0vh,-4vh);
+    margin-bottom: 10px;
+}
+.row1 input[type="checkbox"]{
+    transform: scale(3);
+}
+.column {
+    flex-basis: calc(50% - 10px);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 37px;
+    color: rgb(81, 17, 80);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 25px;
+    border: 1px solid #1091e2e1;
+    border-radius: 3px;
+    background-color: #a65353cc;
+    color:rgb(10, 6, 239);
+}
+
+button {
+    background-color: #fc2c07;
+    color: #fdfbfb;
+    border: none;
+    font-size: 30px;
+    border: 5px solid rgba(31, 69, 82, 0.896);
+    padding: 10px 20px;
+    border-radius: 3px;
+    transform: translate(0vh,4vh);
+    cursor: pointer;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: rgba(52, 171, 16, 0.69);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 10px;
+    transform: translate(-5vh,0vh);
+    color: rgb(255, 0, 0);
+    
+}
+
+#historyList img {
+    max-width: 200px;
+    max-height: 180px;
+    margin-left: 100px;
+}
+#scrollable-div {
+    width: 700px; /* Set a width for the scrollable div */
+    height: 900px; /* Set a height for the scrollable div */
+    overflow: auto; /* Add scrollbars when content overflows */
+}
+
+p{
+    font-size: 35px;
+    transform: translate(10vh,-2vh);
+}
+a {
+    text-decoration: none;
+    color: navy;
+    font-size: 35px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color:red;
+}
+
